@@ -1,9 +1,9 @@
 'use client'
 import React, { useEffect } from 'react';
-import Image from 'next/image';
-import { motion, useAnimation, useScroll, useTransform, useInView } from 'framer-motion';
-import { ArrowUpRight, ChevronRight, Wallet, Shield, LineChart, BadgeDollarSign, Zap, Sparkles, TrendingUp, Lock } from 'lucide-react';
-import { Button } from "@/components/ui/button";
+
+import { motion, useAnimation,   useInView } from 'framer-motion';
+import {   Shield, BadgeDollarSign, Zap,  } from 'lucide-react';
+
 import { Card, CardContent } from "@/components/ui/card";
 
 const GlowingBorder = ({ children }) => (

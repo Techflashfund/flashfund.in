@@ -3,12 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CreditCard, ClipboardList, LineChart, ArrowRight } from 'lucide-react';
 
-const GlowingBorder = ({ children }) => (
-  <div className="relative group">
-    <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 rounded-xl blur-md opacity-0 group-hover:opacity-75 transition-all duration-500" />
-    {children}
-  </div>
-);
+
 
 const FeatureCard = ({ title, description, icon: Icon, delay }) => (
   
