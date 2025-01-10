@@ -8,7 +8,7 @@ import { Feautersgrid } from '../components/feautersgrid';
 import FeaturesSection from '../components/feautrecard';
 import PurchaseFinanceSection from '../components/Purchasefinance';
 import WorkingCapital from '../components/workingcapital';
-import ContactForm from '../components/contactform';
+
 import SupplyChainFinance from '../components/supplychain';
 
 const FadeInWhenVisible = ({ children, delay = 0 }) => {
@@ -71,7 +71,7 @@ export const Mainsec = () => {
   const { scrollYProgress } = useScroll();
   const navbarOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.98]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     firstName: '',
     lastName: '',
     email: '',
