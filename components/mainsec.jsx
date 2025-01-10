@@ -1,17 +1,15 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation, useScroll, useTransform, useInView } from 'framer-motion';
-import { ArrowUpRight, ChevronRight,  TrendingUp } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, TrendingUp } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import {Feautersgrid} from '../components/feautersgrid';
+import { Feautersgrid } from '../components/feautersgrid';
 import FeaturesSection from '../components/feautrecard';
 import PurchaseFinanceSection from '../components/Purchasefinance';
 import WorkingCapital from '../components/workingcapital';
 import ContactForm from '../components/contactform';
-
-// Animation Components
-
+import SupplyChainFinance from '../components/supplychain';
 
 const FadeInWhenVisible = ({ children, delay = 0 }) => {
   const controls = useAnimation();
@@ -45,9 +43,24 @@ const FloatingElement = ({ children }) => (
 );
 
 export const Mainsec = () => {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const { scrollYProgress } = useScroll();
   const navbarOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.98]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    updateDimensions();
+
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -89,7 +102,7 @@ export const Mainsec = () => {
         ))}
 
         {/* Animated floating elements */}
-        {[...Array(6)].map((_, i) => (
+        {dimensions.width > 0 && [...Array(6)].map((_, i) => (
           <motion.div
             key={`circle-${i}`}
             className={`absolute rounded-full bg-gradient-to-r ${
@@ -98,14 +111,14 @@ export const Mainsec = () => {
             initial={{
               scale: 0.8,
               opacity: 0.05,
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * dimensions.width,
+              y: Math.random() * dimensions.height,
             }}
             animate={{
               scale: [0.8, 1.2, 0.8],
               opacity: [0.05, 0.1, 0.05],
-              x: [null, '100%', '-100%'],
-              y: [null, '-50%', '50%'],
+              x: [null, dimensions.width, -dimensions.width],
+              y: [null, -dimensions.height/2, dimensions.height/2],
             }}
             transition={{
               duration: 15 + i * 2,
@@ -169,11 +182,13 @@ export const Mainsec = () => {
               ))}
             </div>
             
-            <Image src='/ondc-network-vertical.png'  alt="ondc logo"
-                width={120}
-                height={75}
-                className="w-32 md:w-auto"
-                />
+            <Image 
+              src='/ondc-network-vertical.png'  
+              alt="ondc logo"
+              width={120}
+              height={75}
+              className="w-32 md:w-auto"
+            />
           </div>
         </div>
       </motion.nav>
@@ -184,7 +199,6 @@ export const Mainsec = () => {
           {/* Home Section */}
           <section id="home" className="text-center max-w-4xl mx-auto">
             <FadeInWhenVisible>
-              {/* Hero content */}
               <FloatingElement>
                 <motion.div
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-50 to-indigo-100/50 border border-purple-200/50 rounded-full px-6 py-2 mb-8 relative group"
@@ -197,12 +211,11 @@ export const Mainsec = () => {
               </FloatingElement>
             </FadeInWhenVisible>
 
-            {/* Title and hero content */}
             <FadeInWhenVisible delay={0.2}>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-8">
                 <span className="relative inline-block">
                   <span className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 to-indigo-400/20 blur-2xl" />
-                  <span className="relative font-thin">
+                  <span className="relative font-medium">
                     Next Generation Financial Solutions with
                     <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent font-bold"> flashfund </span>
                   </span>
@@ -210,7 +223,6 @@ export const Mainsec = () => {
               </h1>
             </FadeInWhenVisible>
 
-            {/* Subtitle */}
             <FadeInWhenVisible delay={0.4}>
               <motion.p 
                 className="mt-8 text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
@@ -223,10 +235,8 @@ export const Mainsec = () => {
               </motion.p>
             </FadeInWhenVisible>
 
-            {/* CTA Buttons */}
             <FadeInWhenVisible delay={0.6}>
               <div className="mt-12 flex flex-wrap justify-center gap-6">
-                {/* Get Started Button */}
                 <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
                   <Button
                     size="lg"
@@ -244,7 +254,6 @@ export const Mainsec = () => {
                   </Button>
                 </motion.div>
                 
-                {/* See How It Works Button */}
                 <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
                   <Button
                     variant="outline"
@@ -263,10 +272,11 @@ export const Mainsec = () => {
 
           {/* Products Section */}
           <section id="products">
-            <Feautersgrid/>
-            <FeaturesSection/>
-            <PurchaseFinanceSection/>
-            <WorkingCapital/>
+            <Feautersgrid />
+            <FeaturesSection />
+            <PurchaseFinanceSection />
+            <WorkingCapital />
+            <SupplyChainFinance />
           </section>
 
           {/* About Section */}
@@ -278,7 +288,7 @@ export const Mainsec = () => {
 
       {/* Contact Section */}
       <section id="contact">
-        <ContactForm/>
+        <ContactForm />
       </section>
     </div>
   );
