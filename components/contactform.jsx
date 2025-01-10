@@ -1,14 +1,47 @@
-import React from 'react';
-import { Twitter, Instagram, Youtube, Phone, Mail, MapPin } from 'lucide-react';
+'use client'
+import React, { useState } from 'react';
+import { Linkedin, Instagram, Youtube, Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
+    
+    // Construct email body with form data
+    const emailBody = `
+First Name: ${formData.firstName}
+Last Name: ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+
+Message:
+${formData.message}
+    `;
+
+    // Construct mailto URL
+    const mailtoLink = `mailto:contact@flashfund.com?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
   };
 
   return (
-    <div className=" bg-white">
+    <div className="bg-white">
       <div className="grid md:grid-cols-2">
         {/* Left Column - Contact Information */}
         <div className="bg-purple-600 p-8 md:p-12 text-white">
@@ -18,29 +51,27 @@ const ContactForm = () => {
           <div className="space-y-6 mb-12">
             <div className="flex items-center gap-4">
               <Phone className="w-5 h-5" />
-              <span>+12345678</span>
+              <span>+91 9995103430</span>
             </div>
             <div className="flex items-center gap-4">
               <Mail className="w-5 h-5" />
-              <span>--@gmail.</span>
+              <span>info@flashfund.in</span>
             </div>
             <div className="flex items-center gap-4">
               <MapPin className="w-5 h-5" />
-              <span>Thoppinmoola, Poothole, Thrissur, Kerala 680004</span>
+              <span>KITEZ Business Park Thoppinmoola, Poothole, Thrissur, Kerala 680004</span>
             </div>
           </div>
 
           {/* Social Media Links */}
           <div className="flex gap-4 mt-auto">
             <a href="#" className="p-2 hover:bg-purple-500 rounded-full transition-colors">
-              <Twitter className="w-5 h-5" />
+              <Linkedin className="w-5 h-5" />
             </a>
             <a href="#" className="p-2 hover:bg-purple-500 rounded-full transition-colors">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="#" className="p-2 hover:bg-purple-500 rounded-full transition-colors">
-              <Youtube className="w-5 h-5" />
-            </a>
+            
           </div>
         </div>
 
@@ -51,14 +82,22 @@ const ContactForm = () => {
               <div>
                 <input
                   type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
                   placeholder="First Name"
+                  required
                   className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
                 />
               </div>
               <div>
                 <input
                   type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
                   placeholder="Last Name"
+                  required
                   className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
                 />
               </div>
@@ -68,14 +107,22 @@ const ContactForm = () => {
               <div>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Email"
+                  required
                   className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
                 />
               </div>
               <div>
                 <input
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   placeholder="Phone Number"
+                  required
                   className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
                 />
               </div>
@@ -83,8 +130,12 @@ const ContactForm = () => {
 
             <div>
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Write your message..."
                 rows={4}
+                required
                 className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
               />
             </div>
