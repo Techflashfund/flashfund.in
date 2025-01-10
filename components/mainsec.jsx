@@ -102,7 +102,7 @@ export const Mainsec = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
+    <div id="home" className="min-h-screen bg-white text-gray-900 overflow-hidden">
       {/* Background with patterns */}
       <div className="fixed inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
@@ -229,7 +229,7 @@ export const Mainsec = () => {
       <motion.div className="relative z-10" style={{ scale }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 lg:pt-48">
           {/* Home Section */}
-          <section id="home" className="text-center max-w-4xl mx-auto">
+          <section  className="text-center max-w-4xl mx-auto">
             <FadeInWhenVisible>
               <FloatingElement>
                 <motion.div
@@ -268,7 +268,7 @@ export const Mainsec = () => {
             </FadeInWhenVisible>
 
             <FadeInWhenVisible delay={0.6}>
-              <div className="mt-12 flex flex-wrap justify-center gap-6">
+              <div  className="mt-12 flex flex-wrap justify-center gap-6">
                 <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
                   <Button
                     size="lg"
@@ -303,7 +303,7 @@ export const Mainsec = () => {
           </section>
 
           {/* Products Section */}
-          <section id="products">
+          <section >
             <Feautersgrid />
             <FeaturesSection />
             <PurchaseFinanceSection />

@@ -97,17 +97,17 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="py-32 px-4 relative overflow-hidden">
+    <section  className="py-32 px-4 relative overflow-hidden">
       {/* Animated background patterns */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 " />
+        <div id="products" className="absolute inset-0 " />
         <motion.div
           className="absolute inset-0 opacity-20"
           
         />
       </div>
       
-      <div className="max-w-7xl mx-auto relative">
+      <div  className="max-w-7xl mx-auto relative">
         {/* Section Header */}
         
           <motion.div 
