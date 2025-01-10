@@ -19,7 +19,7 @@ const SupplyChainFinance = () => {
     {
       icon: Users,
       title: "Supplier Network",
-      description: "Strengthen relationships with suppliers through early payments and better terms"
+      description: "Strengthen relationships with suppliers through early payment and better terms"
     }
   ];
 
