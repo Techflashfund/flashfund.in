@@ -127,7 +127,7 @@ const FeaturesSection = () => {
             </motion.div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              Quick, Easy Financing Solutions for MSME'S
+              Quick, Easy Financing Solutions for MSMES
             </h2>
             <p className="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed">
               Empower Your Business with Comprehensive Financial Solutions to Excel! 
@@ -138,7 +138,7 @@ const FeaturesSection = () => {
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8 relative z-10">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <FeatureCard
               key={feature.title}
               {...feature}

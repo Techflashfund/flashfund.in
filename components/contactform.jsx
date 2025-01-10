@@ -26,7 +26,7 @@ const ContactForm = () => {
             </div>
             <div className="flex items-center gap-4">
               <MapPin className="w-5 h-5" />
-              <span>----------</span>
+              <span>Thoppinmoola, Poothole, Thrissur, Kerala 680004</span>
             </div>
           </div>
 
