@@ -38,7 +38,7 @@ export const Feautersgrid = () => {
                           whileHover={{ scale: 1.05 }}
                           transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         ></motion.div>
-        <Card className="h-full group relative overflow-hidden bg-white backdrop-blur-xl border-blue-100/50 hover:border-blue-200/50 transition-all duration-500 hover:shadow-xl shadow-2xl  hover:shadow-blue-100/50">
+        <Card className="h-full group relative overflow-hidden bg-purple-200 backdrop-blur-xl   transition-all duration-500 hover:shadow-xl shadow-2xl  hover:shadow-blue-100/50">
           <CardContent className="p-8 relative z-10">
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
@@ -46,6 +46,7 @@ export const Feautersgrid = () => {
               transition={{ delay: 0.2 * index }}
               className="bg-gradient-to-br from-blue-50 to-blue-100/50 p-4 rounded-2xl w-fit mb-6"
             >
+              
               <feature.icon className="w-8 h-8 text-blue-600" />
             </motion.div>
             <motion.h3 
@@ -56,6 +57,7 @@ export const Feautersgrid = () => {
             >
               {feature.title}
             </motion.h3>
+            
             <motion.p 
               className="text-gray-600 text-lg leading-relaxed "
               initial={{ y: 20, opacity: 0 }}

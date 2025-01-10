@@ -8,7 +8,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className=" bg-white">
       <div className="grid md:grid-cols-2">
         {/* Left Column - Contact Information */}
         <div className="bg-purple-600 p-8 md:p-12 text-white">
@@ -22,11 +22,11 @@ const ContactForm = () => {
             </div>
             <div className="flex items-center gap-4">
               <Mail className="w-5 h-5" />
-              <span>demo@gmail.com</span>
+              <span>--@gmail.</span>
             </div>
             <div className="flex items-center gap-4">
               <MapPin className="w-5 h-5" />
-              <span>132 Dartmouth Street Boston, Massachusetts 02156</span>
+              <span>----------</span>
             </div>
           </div>
 
@@ -112,7 +112,7 @@ const ContactForm = () => {
                 <span className="text-white font-bold">flashfund</span>
               </div>
               <p className="text-sm">
-                ©️2023 & 2024<br />
+                ©️2025<br />
                 All right reserved
               </p>
             </div>

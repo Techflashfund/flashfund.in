@@ -63,9 +63,12 @@ const PurchaseFinanceSection = () => {
             Purchase Finance
           </motion.h1>
 
+          <span className='text-gray-400 font-semibold '>Registered  on <span className='text-blue-700 font-bold'>ONDC</span> Protocol
+                      </span>
+
           <motion.p 
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-2xl mx-auto mb-8"
+            className="text-xl text-gray-600 max-w-2xl mx-auto m-8"
           >
             Unlock limitless purchasing power with our innovative solution. 
             Designed to help businesses thrive with seamless financial options.
@@ -105,13 +108,13 @@ const PurchaseFinanceSection = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow"
+              className="bg-purple-300 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow"
             >
               <motion.div 
                 initial={{ rotate: 0 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6"
+                className="w-12 h-12 bg-purple-200 rounded-xl flex items-center justify-center mb-6"
               >
                 <feature.icon className="w-6 h-6 text-purple-600" />
               </motion.div>

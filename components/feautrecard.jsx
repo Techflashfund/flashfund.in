@@ -10,7 +10,7 @@ const FeatureCard = ({ title, description, icon: Icon, delay }) => (
     <motion.div
       
       
-      className="bg-white rounded-xl p-8 shadow-xl relative overflow-hidden group backdrop-blur-sm"
+      className="bg-purple-200 rounded-xl p-8 shadow-xl relative overflow-hidden group backdrop-blur-sm"
     >
       {/* Animated gradient background */}
       <motion.div 
@@ -50,7 +50,9 @@ const FeatureCard = ({ title, description, icon: Icon, delay }) => (
         <h3 className="text-2xl font-bold mb-4 bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">
           {title}
         </h3>
-        <p className="text-gray-600 leading-relaxed text-lg">
+        <span className='text-gray-500 font-semibold'>Powered by <span className='text-blue-700 font-bold'>ONDC</span> Protocol
+                      </span>
+        <p className="text-gray-600 leading-relaxed text-lg mt-4">
           {description}
         </p>
         

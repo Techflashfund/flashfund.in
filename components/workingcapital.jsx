@@ -62,10 +62,11 @@ const WorkingCapital = () => {
           >
             Working Capital
           </motion.h1>
-
+          <span className='text-gray-400 font-semibold '>Registered  on <span className='text-blue-700 font-bold'>ONDC</span> Protocol
+          </span>
           <motion.p 
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-2xl mx-auto mb-8"
+            className="text-xl text-gray-600 max-w-2xl mx-auto m-8"
           >
             Fuel your business growth with instant access to working capital. 
             Keep your operations running smoothly with flexible financing options.
@@ -105,7 +106,7 @@ const WorkingCapital = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow"
+              className="bg-purple-300 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow"
             >
               <motion.div 
                 initial={{ rotate: 0 }}
