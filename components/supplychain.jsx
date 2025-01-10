@@ -129,7 +129,7 @@ const SupplyChainFinance = () => {
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-4 h-4 bg-purple-200 rounded-full"
+              className="absolute w-4 h-4 bg-purple-300 rounded-full"
               initial={{
                 x: Math.random() * 100 + "%",
                 y: Math.random() * 100 + "%",

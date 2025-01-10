@@ -38,7 +38,7 @@ export const Feautersgrid = () => {
                           whileHover={{ scale: 1.05 }}
                           transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         ></motion.div>
-        <Card className="h-full group relative overflow-hidden bg-purple-200 backdrop-blur-xl   transition-all duration-500 hover:shadow-xl shadow-2xl  hover:shadow-blue-100/50">
+        <Card className="h-full group relative overflow-hidden bg-purple-300 backdrop-blur-xl   transition-all duration-500 hover:shadow-xl shadow-2xl  hover:shadow-blue-100/50">
           <CardContent className="p-8 relative z-10">
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}

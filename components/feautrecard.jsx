@@ -10,7 +10,7 @@ const FeatureCard = ({ title, description, icon: Icon }) => (
     <motion.div
       
       
-      className="bg-purple-200 rounded-xl p-8 shadow-xl relative overflow-hidden group backdrop-blur-sm"
+      className="bg-purple-300 rounded-xl p-8 shadow-xl relative overflow-hidden group backdrop-blur-sm"
     >
       {/* Animated gradient background */}
       <motion.div 

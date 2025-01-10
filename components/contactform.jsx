@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import { Linkedin, Instagram, Youtube, Phone, Mail, MapPin } from 'lucide-react';
+import { Linkedin, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -8,37 +8,35 @@ const ContactForm = () => {
     lastName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    newsletter: ''
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
       [name]: value
-    }));
+    });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // Construct email body with form data
-    const emailBody = `
-First Name: ${formData.firstName}
-Last Name: ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-
-Message:
-${formData.message}
-    `;
-
-    // Construct mailto URL
-    const mailtoLink = `mailto:contact@flashfund.com?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
-    
-    // Open default email client
-    window.location.href = mailtoLink;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Submitting form:', formData);
+    alert('Form submitted!');
   };
+
+  const handleNewsletterSubmit = (event) => {
+    event.preventDefault();
+    console.log('Newsletter submitted:', formData.newsletter);
+    if (formData.newsletter) {
+      alert('Newsletter subscription successful!');
+      setFormData(prev => ({ ...prev, newsletter: '' }));
+    }
+  };
+
+  // Simplified input style without pointer-events-auto
+  const inputStyle = "w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500";
 
   return (
     <div className="bg-white">
@@ -63,7 +61,6 @@ ${formData.message}
             </div>
           </div>
 
-          {/* Social Media Links */}
           <div className="flex gap-4 mt-auto">
             <a href="#" className="p-2 hover:bg-purple-500 rounded-full transition-colors">
               <Linkedin className="w-5 h-5" />
@@ -71,7 +68,6 @@ ${formData.message}
             <a href="#" className="p-2 hover:bg-purple-500 rounded-full transition-colors">
               <Instagram className="w-5 h-5" />
             </a>
-            
           </div>
         </div>
 
@@ -84,10 +80,9 @@ ${formData.message}
                   type="text"
                   name="firstName"
                   value={formData.firstName}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   placeholder="First Name"
-                  required
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
+                  className={inputStyle}
                 />
               </div>
               <div>
@@ -95,10 +90,9 @@ ${formData.message}
                   type="text"
                   name="lastName"
                   value={formData.lastName}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   placeholder="Last Name"
-                  required
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
+                  className={inputStyle}
                 />
               </div>
             </div>
@@ -109,10 +103,9 @@ ${formData.message}
                   type="email"
                   name="email"
                   value={formData.email}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   placeholder="Email"
-                  required
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
+                  className={inputStyle}
                 />
               </div>
               <div>
@@ -120,10 +113,9 @@ ${formData.message}
                   type="tel"
                   name="phone"
                   value={formData.phone}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   placeholder="Phone Number"
-                  required
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
+                  className={inputStyle}
                 />
               </div>
             </div>
@@ -132,11 +124,10 @@ ${formData.message}
               <textarea
                 name="message"
                 value={formData.message}
-                onChange={handleChange}
+                onChange={handleInputChange}
                 placeholder="Write your message..."
                 rows={4}
-                required
-                className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
+                className={inputStyle}
               />
             </div>
 
@@ -195,16 +186,22 @@ ${formData.message}
             {/* Newsletter */}
             <div>
               <h3 className="text-white font-bold mb-4">Stay up to date</h3>
-              <div className="flex">
+              <form onSubmit={handleNewsletterSubmit} className="flex">
                 <input
                   type="email"
+                  name="newsletter"
+                  value={formData.newsletter}
+                  onChange={handleInputChange}
                   placeholder="Enter your email"
-                  className="flex-1 p-2 bg-gray-800 rounded-l focus:outline-none"
+                  className="flex-1 p-2 bg-gray-800 rounded-l focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 />
-                <button className="bg-purple-600 text-white px-4 rounded-r hover:bg-purple-700">
+                <button 
+                  type="submit"
+                  className="bg-purple-600 text-white px-4 rounded-r hover:bg-purple-700"
+                >
                   →
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
