@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation, useScroll, useTransform, useInView } from 'framer-motion';
-import { ArrowUpRight, ChevronRight, Lock, TrendingUp } from 'lucide-react';
+import { ArrowUpRight, ChevronRight,  TrendingUp } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {Feautersgrid} from '../components/feautersgrid';
 import FeaturesSection from '../components/feautrecard';
@@ -11,12 +11,7 @@ import WorkingCapital from '../components/workingcapital';
 import ContactForm from '../components/contactform';
 
 // Animation Components
-const GlowingBorder = ({ children }) => (
-  <div className="relative group">
-    <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-400/50 via-indigo-600/50 to-purple-400/50 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-all duration-700" />
-    <div className="relative">{children}</div>
-  </div>
-);
+
 
 const FadeInWhenVisible = ({ children, delay = 0 }) => {
   const controls = useAnimation();
