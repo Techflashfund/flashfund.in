@@ -5,7 +5,7 @@ import { CreditCard, ClipboardList, LineChart, ArrowRight } from 'lucide-react';
 
 
 
-const FeatureCard = ({ title, description, icon: Icon, delay }) => (
+const FeatureCard = ({ title, description, icon: Icon }) => (
   
     <motion.div
       
@@ -75,20 +75,7 @@ const FeatureCard = ({ title, description, icon: Icon, delay }) => (
   
 );
 
-const FloatingElement = ({ children, delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay }}
-    viewport={{ once: true }}
-    animate={{
-      y: [-5, 5, -5],
-    }}
-    
-  >
-    {children}
-  </motion.div>
-);
+
 
 const FeaturesSection = () => {
   const features = [
@@ -155,7 +142,7 @@ const FeaturesSection = () => {
             <FeatureCard
               key={feature.title}
               {...feature}
-              delay={index * 0.2}
+              
             />
           ))}
         </div>

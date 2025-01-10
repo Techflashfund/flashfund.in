@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link2, Shield, Users, Clock, ArrowRight, BarChart2 } from 'lucide-react';
+import { Link2, Shield, Users,  ArrowRight, BarChart2 } from 'lucide-react';
 
 const SupplyChainFinance = () => {
   const features = [
